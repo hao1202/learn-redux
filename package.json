@@ -1,0 +1,25 @@
+{
+  "name": "redux",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hao1202/learn-redux.git"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "author": "tranvanhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hao1202/learn-redux/issues"
+  },
+  "homepage": "https://github.com/hao1202/learn-redux#readme",
+  "dependencies": {
+    "redux": "^4.2.1"
+  }
+}
