@@ -23,6 +23,13 @@ function actionAdd(payload) {
         payload
     }
 }
+
+function actionDelete(payload) {
+    return {
+        type: "DELETE",
+        payload
+    }
+}
 // reducer
 const initState = {
     listTodo: []
@@ -35,6 +42,14 @@ function todoReducer(state = initState, action) {
                 ...state,
                 listTodo: [...state.listTodo, action.payload]
             }
+        case "DELETE":
+            const newArr = [...state.listTodo].filter((data, index) => {
+                return index != action.payload;
+            })
+            return {
+                ...state,
+                listTodo: [...newArr]
+            }
         default:
             return state;
     }
@@ -45,9 +60,15 @@ store.subscribe(() => {
     render();
 });
 function render() {
-    danhSach.innerHTML = store.getState().listTodo.reduce((accumulator, currentValue) => {
-        return accumulator + `<li>${currentValue}</li>`;
+    danhSach.innerHTML = store.getState().listTodo.reduce((accumulator, currentValue, index) => {
+        return accumulator + `<li>${currentValue} <button class="xoa">Xoa</button></li>`;
     }, "");
+    const xoaButtons = document.querySelectorAll('.xoa');
+    xoaButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            store.dispatch(actionDelete(index));
+        });
+    });
 };
 
 
